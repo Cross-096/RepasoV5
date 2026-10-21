@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Index</title>
+<style>
+:root{--bg:#0a0a0a;--card:#141414;--line:#2a2a2a;--fg:#f4f4f4;--mut:#8d8d8d;--red:#e11d2e;--green:#22c55e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace}
+header{padding:56px 20px 24px;max-width:900px;margin:auto}
+h1{font-size:clamp(2rem,6vw,3.4rem);margin:0;letter-spacing:-.03em;line-height:1.05}
+h1 span{color:var(--red)}
+.sub{color:var(--mut);margin:12px 0 20px}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--red);transition:width .4s,background .4s}
+.bar i.ok{background:var(--green)}
+.pt{font-size:.85rem;color:var(--mut);margin-top:6px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+nav div{display:flex;gap:8px;overflow-x:auto;padding:10px 20px;max-width:900px;margin:auto}
+nav a{white-space:nowrap;color:var(--mut);text-decoration:none;font-size:.85rem;padding:6px 12px;border:1px solid var(--line);border-radius:99px;transition:.2s}
+nav a:hover,nav a.on{color:#fff;border-color:var(--red);background:var(--red)}
+main{max-width:900px;margin:auto;padding:0 20px 80px}
+.search{width:100%;margin:24px 0 0;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--fg);font:inherit;outline:0}
+.search:focus{border-color:var(--red)}
+section{margin-top:48px;scroll-margin-top:70px}
+h2{font-size:1.5rem;margin:0 0 16px;display:flex;gap:12px;align-items:baseline}
+h2 small{color:var(--red);font:600 .8rem ui-monospace,monospace}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;transition:border-color .2s}
+details:hover{border-color:#555}
+details[open]{border-color:var(--red)}
+summary{cursor:pointer;padding:14px 16px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--red);font-size:1.3rem;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details.done summary{color:var(--green)}
+.body{padding:0 16px 16px;color:#d0d0d0}
+.body p{margin:0 0 10px}
+pre{background:#000;border:1px solid var(--line);border-left:3px solid var(--red);padding:12px;border-radius:6px;overflow-x:auto;font-size:.85rem;margin:0 0 12px;color:#f2c9cc}
+.chk{background:none;border:1px solid var(--line);color:var(--mut);padding:6px 12px;border-radius:6px;cursor:pointer;font:inherit;font-size:.85rem}
+.chk:hover{border-color:var(--green);color:var(--green)}
+.done .chk{background:var(--green);border-color:var(--green);color:#000}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:16px}
+.demo h3{margin:0 0 12px;font-size:1rem;color:var(--red)}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+select{background:#000;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit}
+select:focus{border-color:var(--red);outline:0}
+label{font-size:.8rem;color:var(--mut);display:flex;flex-direction:column;gap:4px}
+#fx{display:flex;min-height:150px;border:1px dashed var(--mut);border-radius:6px;padding:8px}
+#fx b{background:var(--red);color:#fff;min-width:44px;min-height:44px;padding:10px 14px;border-radius:6px;display:grid;place-items:center;transition:background .2s}
+#fx b:nth-child(2){background:#fff;color:#000;height:70px}
+#fx b:hover{background:var(--green);color:#000}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.qm{display:flex;justify-content:space-between;color:var(--mut);font-size:.85rem;margin-bottom:12px}
+.q{font-size:1.15rem;font-weight:600;margin:0 0 16px}
+.opt{display:block;width:100%;text-align:left;background:#000;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:8px;font:inherit;cursor:pointer;transition:.2s}
+.opt:hover:not(:disabled){border-color:#fff;transform:translateX(4px)}
+.opt:disabled{cursor:default}
+.opt.ok{background:rgba(34,197,94,.15);border-color:var(--green);color:#b6f5cb}
+.opt.no{background:rgba(225,29,46,.13);border-color:var(--red);color:#ffb3ba}
+.opt.pick{font-weight:700}
+.exp{margin-top:12px;padding:12px;border-left:3px solid var(--green);background:#0d0d0d;font-size:.92rem;display:none}
+.exp.show{display:block}
+.btn{background:var(--red);color:#fff;border:0;border-radius:8px;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer;margin-top:12px;transition:.2s}
+.btn:hover{background:#fff;color:#000}
+.res{text-align:center;padding:20px 0}
+.res big{display:block;font-size:3.5rem;font-weight:800}
+.hid{display:none!important}
+.ctrl2{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.lab{display:none;position:relative}.lab.on{display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{background:none;border:1px solid var(--line);color:var(--mut);padding:6px 12px;border-radius:99px;font:inherit;font-size:.85rem;cursor:pointer;transition:.2s}.tab:hover{border-color:var(--red);color:#fff}.tab.on{background:var(--red);border-color:var(--red);color:#fff}
+.stage{border:1px dashed var(--mut);border-radius:6px;padding:12px;min-height:110px;overflow:auto;margin-bottom:12px}.note{color:var(--mut);font-size:.85rem;margin:10px 0 0}
+input[type=range]{accent-color:var(--red);width:170px}.stage input{accent-color:var(--red);background:#000;color:#fff;border:1px solid var(--line);border-radius:6px;padding:8px;font:inherit}
+.stage h2{font-size:1rem;margin:0}.stage section,.stage main,.stage figure{border:1px solid #444;padding:6px;margin:4px;border-radius:4px}.stage strong,.stage span{display:block}.hl{outline:2px solid var(--red);background:rgba(225,29,46,.3)}
+.frame{background:#000;border:1px solid var(--mut);border-radius:8px;padding:10px;max-width:100%;transition:width .15s}.bar2{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}.menu{gap:6px}.menu a{padding:6px 10px;background:#141414;border:1px solid var(--line);border-radius:6px;font-size:.85rem}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:30px}
+</style>
+</head>
+<body>
+<header>
+<h1>Repaso <span>HTML</span> &amp; <span>CSS</span></h1>
+<p class="sub">Temario del examen, en tarjetas desplegables. Marca lo que ya domines y ponte a prueba con el test.</p>
+<div class="bar"><i id="pb"></i></div>
+<div class="pt" id="pt"></div>
+</header>
+<nav><div id="nav"></div></nav>
+<main>
+<input class="search" id="s" type="search" placeholder="Buscar un concepto (flex, label, rem…)">
+<div id="topics"></div>
+<section id="demo">
+<h2><small>LAB</small>Laboratorios</h2>
+<div class="tabs" id="tabs"></div>
+<div class="demo lab on" data-n="Flexbox"><h3>Flexbox</h3>
+<div class="ctrl">
+<label>flex-direction<select data-p="flexDirection"><option>row</option><option>column</option><option>row-reverse</option><option>column-reverse</option></select></label>
+<label>justify-content<select data-p="justifyContent"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select></label>
+<label>align-items<select data-p="alignItems"><option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option></select></label>
+<label>flex-wrap<select data-p="flexWrap"><option>nowrap</option><option>wrap</option></select></label>
+<label>gap<select data-p="gap"><option>0px</option><option>10px</option><option>24px</option></select></label>
+</div>
+<div id="fx"><b>1</b><b>2</b><b>3</b></div>
+<pre id="fxc" style="margin-top:12px"></pre>
+</div>
+<div id="more"></div>
+</section>
+<section id="test">
+<h2><small>TEST</small>Preguntas</h2>
+<div class="qc" id="qc"></div>
+</section>
+</main>
+<footer>Mucha suerte en el examen.</footer>
+<script>
+const T=[
+["HTML: estructura","est",[
+["Estructura del documento","<!DOCTYPE html> indica que es HTML5. <html lang=\"es\"> es la raíz e indica el idioma. <head> contiene metadatos (no se ve). <body> contiene el contenido visible.","<!DOCTYPE html>\n<html lang=\"es\">\n<head>…<\/head>\n<body>…<\/body>\n<\/html>"],
+["Metadatos y title","meta charset define la codificación (UTF-8, para tildes y ñ). meta viewport adapta la página a móviles. meta description resume la página para buscadores. title sale en la pestaña, favoritos y resultados de búsqueda: es clave para SEO y accesibilidad.","<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"description\" content=\"Resumen\">\n<title>Mi página<\/title>"],
+["Comentarios","No se muestran en el navegador.","<!-- esto es un comentario -->"]]],
+["HTML: texto","txt",[
+["Títulos h1–h6","Jerarquía: un solo h1 por página y no saltarse niveles (h1, h2, h3…). Se eligen por significado, no por tamaño."],
+["Párrafos y énfasis","p = párrafo. Semántico (tiene significado): strong (importancia), em (énfasis). Tipográfico (solo aspecto): b (negrita), i (cursiva).","<strong>Importante<\/strong> <em>énfasis<\/em> <b>negrita<\/b> <i>cursiva<\/i>"],
+["Atributo lang en fragmentos","Se usa en un trozo de otro idioma para lectores de pantalla y traductores.","<span lang=\"en\">Hello world<\/span>"],
+["Citas: blockquote y q","blockquote = cita larga (bloque, con cite opcional). q = cita corta en línea; el navegador añade las comillas.","<blockquote cite=\"url\">Cita larga<\/blockquote>\n<q>cita corta<\/q>"],
+["code, del, ins, data, address, small","code = código en línea. del = texto eliminado (tachado). ins = texto insertado (subrayado). data value = dato legible por máquina. address = información de contacto. small = texto secundario (letra pequeña).","<code>let x<\/code> <del>10€<\/del> <ins>8€<\/ins>\n<data value=\"42\">Cuarenta y dos<\/data>\n<address>info@web.com<\/address>\n<small>© 2025<\/small>"],
+["Enlaces <a>","Absolutos (URL completa), relativos (ruta de archivo) y a anclas (#id de la misma página). mailto: abre el correo y tel: llama. target=\"_blank\" abre en pestaña nueva y se acompaña de rel=\"noopener noreferrer\" por seguridad. title da un texto emergente.","<a href=\"https://web.com\">Absoluto<\/a>\n<a href=\"pagina.html\">Relativo<\/a>\n<a href=\"#contacto\">Ancla<\/a>\n<a href=\"mailto:a@b.com\">Correo<\/a>\n<a href=\"tel:+34600000000\">Llamar<\/a>\n<a href=\"https://web.com\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Ir\">Web<\/a>"]]],
+["HTML: listas","lis",[
+["ul y ol","ul = desordenada (viñetas). ol = ordenada; admite start (número inicial) y type (1, a, A, i, I).","<ul><li>A<\/li><\/ul>\n<ol start=\"5\" type=\"a\"><li>E<\/li><\/ol>"],
+["Listas de descripción","dl contiene pares: dt (término) y dd (descripción).","<dl><dt>HTML<\/dt><dd>Lenguaje de marcas<\/dd><\/dl>"],
+["Listas anidadas","Una lista dentro de un li, útil dentro de secciones.","<ul><li>Fruta<ul><li>Manzana<\/li><\/ul><\/li><\/ul>"]]],
+["HTML semántico y multimedia","sem",[
+["Elementos de estructura","header (cabecera), nav (menú), main (contenido principal, uno por página), section (sección temática), article (contenido independiente), footer (pie). div y span no tienen significado: se usan solo cuando no hay etiqueta semántica adecuada (div = bloque, span = en línea)."],
+["Imágenes","img lleva src, alt (texto alternativo), width y height. Rutas relativas a carpetas (img/foto.jpg) o imágenes externas (URL completa). figure agrupa la imagen y figcaption es su pie.","<figure>\n <img src=\"img/pikachu.png\" alt=\"Pikachu\" width=\"200\" height=\"200\">\n <figcaption>Pikachu<\/figcaption>\n<\/figure>"],
+["Sitio de varias páginas","Se enlazan las páginas con un menú de navegación dentro de nav.","<nav><a href=\"index.html\">Inicio<\/a> <a href=\"fuego.html\">Fuego<\/a><\/nav>"]]],
+["Formularios HTML","frm",[
+["form, name/value y botones","form usa action (destino) y method=\"get\" (los datos viajan en la URL). Se envían pares name=value, por eso cada campo necesita name. Botones: button o input type=\"submit\".","<form action=\"buscar.php\" method=\"get\">\n <input name=\"q\">\n <button>Enviar<\/button>\n<\/form>\n→ buscar.php?q=texto"],
+["label","Se asocia al campo envolviéndolo o con for/id (el for coincide con el id).","<label for=\"n\">Nombre<\/label>\n<input id=\"n\" name=\"n\">"],
+["Tipos de input","text, password, email, number, tel, url, search. Además: date, time, color, range, file. Y checkbox (varias opciones) y radio (una sola; mismo name en el grupo).","<input type=\"email\">\n<input type=\"radio\" name=\"g\" value=\"a\" checked>"],
+["Atributos de los campos","placeholder (pista), min/max/step (límites y salto en number, range, date), checked (marcado), multiple (varios en file o select), list (enlaza con un datalist).","<input type=\"number\" min=\"1\" max=\"10\" step=\"2\">"],
+["select, textarea y datalist","select/option: lista desplegable, simple o con multiple. textarea con rows y cols. datalist da sugerencias a un input mediante list.","<select><option>A<\/option><\/select>\n<textarea rows=\"4\" cols=\"30\"><\/textarea>\n<input list=\"l\"><datalist id=\"l\"><option value=\"Sevilla\"><\/datalist>"],
+["Validación nativa","El navegador valida según el tipo (email exige @, url exige URL, number solo números) y con required, min, max.","<input type=\"email\" required>"]]],
+["CSS: incorporación","css",[
+["Tres formas","En línea (style=\"\" en la etiqueta), interna (<style> en el head) y externa (<link rel=\"stylesheet\"> a un .css). Prioridad: en línea > interna/externa; entre estas dos manda la que se declara después (cascada). La externa es la recomendada.","<link rel=\"stylesheet\" href=\"css/reset.css\">\n<link rel=\"stylesheet\" href=\"css/estilos.css\">"],
+["Organización y reset","Carpetas css/, img/ y js/. reset.css (borra estilos por defecto) se carga antes que la hoja propia para que la propia pueda sobrescribirlo."],
+["Comentarios CSS","Se escriben con /* */.","/* comentario */"]]],
+["CSS: selectores","sel",[
+["Básicos y agrupación","Elemento: p. Clase: .fire (varios elementos). Id: #pikachu (único). Agrupación con comas.","p{}  .fire{}  #pikachu{}\nh1, h2, h3{color:red}"],
+["Descendiente e hijo directo","El espacio selecciona descendientes a cualquier nivel. > solo hijos directos.","#contenedor strong{}\nsection#fire figure img{}\nmain > section{}"],
+["Pseudoclase :hover","Se aplica cuando el ratón pasa por encima. Los atributos id y class son la base para enlazar estilos.","a:hover{color:red}"]]],
+["CSS: modelo de caja","box",[
+["margin, padding y border","margin = espacio exterior. padding = espacio interior. border = borde (border-width, estilos solid y dashed). border-radius redondea esquinas.","border:2px solid red;\nborder-radius:8px;"],
+["width, max-width y centrado","max-width limita el ancho máximo. Centrar un bloque: margin: auto con ancho definido.","main{max-width:900px;margin:0 auto}"],
+["box-sizing: border-box","El ancho incluye padding y borde (si no, se suman al width y la caja crece).","*{box-sizing:border-box}"]]],
+["CSS: colores y unidades","col",[
+["Colores","Por nombre (red), rgb(255,0,0), hexadecimal de 6 cifras (#ff0000) y de 3 (#f00, abreviada). RGB: 256×256×256 = unos 16 millones de colores."],
+["Unidades","Absoluta: px. Relativas: % (del contenedor), em (tamaño de fuente del elemento padre), rem (tamaño de fuente del html). calc() mezcla unidades.","width:calc(100% - 20px);"]]],
+["CSS: texto","txt2",[
+["Propiedades de texto","color, font-size, font-weight (negrita), text-align (left, center, right, justify), text-transform (uppercase, lowercase, capitalize), text-decoration (underline, none, line-through).","h1{text-transform:uppercase;text-align:center}"]]],
+["CSS: posicionamiento","pos",[
+["Tipos de position","relative: se desplaza desde su posición normal y sigue ocupando su hueco. absolute: sale del flujo y se coloca respecto al ancestro posicionado más cercano. fixed: se fija respecto a la ventana.","position:absolute; top:10px; left:20px;"],
+["Contenedor de referencia y z-index","Para que un absolute se posicione respecto a su padre, este debe tener position: relative. z-index decide qué elemento queda por encima.","padre{position:relative}\nhijo{position:absolute;z-index:5}"]]],
+["CSS: Flexbox","flx",[
+["Contenedor","display:flex activa flexbox. flex-direction: row (defecto) o column. flex-wrap: wrap permite varias líneas. justify-content alinea en el eje principal; align-items en el cruzado. gap separa los hijos.","display:flex;\nflex-direction:row;\nflex-wrap:wrap;\njustify-content:space-between;\nalign-items:center;\ngap:16px;"],
+["Propiedades de los hijos","flex-grow (cuánto crece), flex-shrink (cuánto se encoge), flex-basis (tamaño base). Abreviatura: flex: grow shrink basis.","flex:1 1 200px;"],
+["Tarjetas en rejilla","Fichas con flex, wrap y calc() para repartir el ancho descontando los gap.","ul{display:flex;flex-wrap:wrap;gap:20px}\nli{width:calc(33.33% - 20px)}"]]],
+["Diseño responsive","rsp",[
+["Mobile first y media queries","Se diseña primero para móvil y se amplía con @media (min-width: …) en los puntos de ruptura (breakpoints).","@media (min-width:768px){\n  main{display:flex}\n}"],
+["Imágenes fluidas","width:100% y height:auto para que se adapten al contenedor.","img{width:100%;height:auto}"],
+["Menú de hamburguesa","En móvil el menú se oculta con display:none y se muestra con display (flex/block) al pulsar el botón. En pantallas grandes cambia de orientación con flex-direction (column → row).","nav ul{display:none;flex-direction:column}\n@media(min-width:768px){nav ul{display:flex;flex-direction:row}}"]]]
+];
+const Q=[
+["¿Qué indica <!DOCTYPE html>?",["Que el documento es HTML5","Un comentario","El idioma de la página","El título"],0,"Declara el tipo de documento (HTML5) al navegador."],
+["¿Qué meta hace que la página se adapte a móviles?",["charset","description","viewport","keywords"],2,"meta name=\"viewport\" controla el ancho y la escala en móviles."],
+["¿Por qué es importante <title>?",["Se ve en el cuerpo de la página","Aparece en la pestaña, favoritos y buscadores","Cambia el color de fondo","Es opcional y no sirve para nada"],1,"Es clave para SEO, accesibilidad y la pestaña del navegador."],
+["¿Cuál es el énfasis SEMÁNTICO?",["b e i","strong y em","small y code","del e ins"],1,"strong y em aportan significado; b e i solo aspecto."],
+["Para citar una frase corta en línea usas…",["blockquote","address","q","cite-block"],2,"q es para citas cortas (añade comillas); blockquote para citas largas."],
+["¿Qué etiqueta marca texto eliminado?",["ins","del","small","data"],1,"del = eliminado (tachado); ins = insertado."],
+["¿Cómo abrir un enlace en nueva pestaña de forma segura?",["target=\"_blank\" rel=\"noopener noreferrer\"","target=\"_new\"","href=\"_blank\"","title=\"blank\""],0,"target=\"_blank\" se acompaña de rel=\"noopener noreferrer\"."],
+["¿Qué enlace hace una llamada?",["mailto:","tel:","call:","href=\"phone\""],1,"tel:+34... abre la app de teléfono."],
+["¿Qué atributo cambia el número inicial de un <ol>?",["type","begin","start","value"],2,"start=\"5\" empieza en 5; type cambia el tipo de numeración."],
+["En una lista de descripción, dt es…",["la descripción","el término","el título de la lista","un elemento ordenado"],1,"dt = término, dd = descripción."],
+["¿Qué etiqueta es el contenido principal único de la página?",["section","article","main","div"],2,"main solo debe aparecer una vez."],
+["¿Qué agrupa una imagen con su pie de foto?",["picture y title","figure y figcaption","div y span","img y alt"],1,"figure contiene la imagen y figcaption su leyenda."],
+["¿Para qué sirve el atributo alt?",["Para el tamaño","Texto alternativo si no carga o para lectores de pantalla","Para el enlace","Para centrar"],1,"Es el texto alternativo de la imagen."],
+["¿Qué se envía al servidor con method=\"get\"?",["Pares name/value en la URL","Solo el id","Archivos","Nada"],0,"Se envían name=value en la URL; por eso cada campo necesita name."],
+["¿Cómo se asocia un label a un input?",["Con for = id del input","Con name = class","Con href","No se puede"],0,"Con for/id, o envolviendo el campo dentro del label."],
+["Para que solo se pueda elegir UNA opción entre varias…",["checkbox con mismo id","radio con el mismo name","select multiple","input text"],1,"Los radio del mismo grupo comparten name."],
+["¿Qué atributo conecta un input con un datalist?",["for","list","name","multiple"],1,"input list=\"id\" + datalist id=\"id\"."],
+["Orden de prioridad de estilos (mayor a menor)",["Externa > interna > en línea","En línea > interna/externa (según orden)","Interna > en línea > externa","Todas valen igual"],1,"El estilo en línea gana; entre interna y externa manda la última declarada."],
+["¿Por qué se carga reset.css ANTES que la hoja propia?",["Para que la propia pueda sobrescribirlo","Porque es más rápido","Es obligatorio por ley","Para que no funcione"],0,"Por la cascada, lo último declarado prevalece."],
+["¿Qué selecciona main > section?",["Todas las section dentro de main","Solo las section hijas directas de main","Main y section","Las section con id main"],1,">  = hijo directo."],
+["¿Cuál es un selector de clase?",["#fire",".fire","fire","*fire"],1,"Clase = punto (.); id = almohadilla (#)."],
+["¿Qué hace box-sizing: border-box?",["Quita el borde","El ancho incluye padding y borde","Centra la caja","Añade sombra"],1,"El width ya incluye padding y borde."],
+["Para centrar un bloque con ancho definido…",["margin: auto","padding: auto","text-align: auto","align: center"],0,"margin: 0 auto centra horizontalmente."],
+["¿Cuántos colores permite el modelo RGB aprox.?",["256","65.000","16 millones","1.000 millones"],2,"256 × 256 × 256 ≈ 16,7 millones."],
+["¿Qué es #f00?",["Verde","Rojo (hex de 3 cifras)","Negro","Azul"],1,"Equivale a #ff0000."],
+["1rem es relativo a…",["El padre","La ventana","El tamaño de fuente del elemento html","Los píxeles"],2,"rem = root em; em es relativo al elemento padre."],
+["Un elemento absolute se posiciona respecto a…",["La ventana siempre","El ancestro posicionado más cercano","Su hermano","El body siempre"],1,"Por eso el padre suele llevar position: relative."],
+["¿Qué propiedad alinea en el eje PRINCIPAL en flex?",["align-items","justify-content","gap","flex-wrap"],1,"justify-content = eje principal; align-items = cruzado."],
+["¿Qué hace flex-wrap: wrap?",["Permite que los hijos salten a otra línea","Centra","Invierte el orden","Añade espacio"],0,"Sin wrap, todos intentan ir en una sola línea."],
+["La abreviatura flex: 1 1 200px equivale a…",["grow, shrink, basis","basis, grow, shrink","wrap, direction, gap","order, grow, basis"],0,"flex: grow shrink basis."],
+["¿Qué significa «mobile first»?",["Diseñar primero para móvil y ampliar con min-width","Solo hacer versión móvil","Usar max-width siempre","Ocultar el escritorio"],0,"Estilos base para móvil y @media (min-width) para pantallas mayores."],
+["Para que una imagen sea fluida…",["width:100%; height:auto","width:500px","position:fixed","float:left"],0,"Se adapta al ancho del contenedor manteniendo proporción."],
+["¿Cómo se oculta el menú hamburguesa en móvil?",["display:none y se muestra con display","visibility:blue","z-index:-1","position:fixed"],0,"Se alterna entre display:none y display:flex/block."]
+];
+const $=s=>document.querySelector(s);
+let done=new Set();try{done=new Set(JSON.parse(localStorage.getItem("rv")||"[]"))}catch(e){}
+const save=()=>{try{localStorage.setItem("rv",JSON.stringify([...done]))}catch(e){}};
+let total=0;
+T.forEach(([t,id,its],ti)=>{
+const sec=document.createElement("section");sec.id=id;
+sec.innerHTML=`<h2><small>${String(ti+1).padStart(2,"0")}<\/small>${t}<\/h2>`;
+its.forEach(([h,d,c],ii)=>{
+total++;const k=ti+"-"+ii;
+const dt=document.createElement("details");dt.dataset.k=k;if(done.has(k))dt.className="done";
+const sm=document.createElement("summary");sm.textContent=h;
+const b=document.createElement("div");b.className="body";
+const p=document.createElement("p");p.textContent=d;b.append(p);
+if(c){const pr=document.createElement("pre");pr.textContent=c;b.append(pr)}
+const bt=document.createElement("button");bt.className="chk";bt.textContent=done.has(k)?"Repasado ✓":"Marcar como repasado";
+bt.onclick=()=>{done.has(k)?done.delete(k):done.add(k);dt.classList.toggle("done");bt.textContent=done.has(k)?"Repasado ✓":"Marcar como repasado";save();prog()};
+b.append(bt);dt.append(sm,b);sec.append(dt)});
+$("#topics").append(sec);
+const a=document.createElement("a");a.href="#"+id;a.textContent=t.replace("HTML: ","").replace("CSS: ","CSS ");$("#nav").append(a)});
+["demo","test"].forEach((id,i)=>{const a=document.createElement("a");a.href="#"+id;a.textContent=i?"Test":"Laboratorios";$("#nav").append(a)});
+function prog(){const n=done.size,pc=Math.round(n/total*100);$("#pb").style.width=pc+"%";$("#pb").className=pc==100?"ok":"";$("#pt").textContent=`${n} de ${total} conceptos repasados (${pc}%)`}prog();
+$("#s").oninput=e=>{const v=e.target.value.toLowerCase();document.querySelectorAll("#topics details").forEach(d=>{const m=!v||d.textContent.toLowerCase().includes(v);d.classList.toggle("hid",!m);if(v&&m)d.open=true});document.querySelectorAll("#topics section").forEach(s=>s.classList.toggle("hid",!s.querySelector("details:not(.hid)")))};
+const fx=$("#fx"),fc=$("#fxc");
+function fl(){let s="display:flex;";document.querySelectorAll(".ctrl select").forEach(e=>{fx.style[e.dataset.p]=e.value;s+="\n"+e.dataset.p.replace(/[A-Z]/g,m=>"-"+m.toLowerCase())+":"+e.value+";"});fc.textContent=s}
+document.querySelectorAll(".ctrl select").forEach(e=>e.onchange=fl);fl();
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const kb=s=>s.replace(/[A-Z]/g,m=>"-"+m.toLowerCase());
+function addLab(n,f){const p=el("div","demo lab");p.dataset.n=n;p.append(el("h3",0,n));f(p);$("#more").append(p)}
+function sel(n,o,d,cb){const l=el("label",0,n);const s=el("select");o.forEach(v=>s.add(new Option(v,v)));s.selectedIndex=d||0;s.onchange=cb;l.append(s);return[l,s]}
+function styleLab(n,ctrls,mk,pre,note){addLab(n,p=>{const c=el("div","ctrl2"),st=el("div","stage"),cd=el("pre"),T=mk(st),ss=[];
+const up=()=>{const o={};ss.forEach(([s,k,pr])=>{T[k].style[pr]=s.value;(o[k]=o[k]||[]).push(kb(pr)+": "+s.value+";")});cd.textContent=Object.keys(o).map(k=>pre[k]+" {\n  "+o[k].join("\n  ")+"\n}").join("\n\n")};
+ctrls.forEach(([pr,op,d,k])=>{const[l,s]=sel(kb(pr)+(k=="p"?" (padre)":""),op,d,up);ss.push([s,k||"a",pr]);c.append(l)});
+p.append(c,st,cd);if(note)p.append(el("p","note",note));up()})}
+styleLab("Modelo de caja",[["margin",["0px","10px","30px"],1],["padding",["0px","10px","30px"],1],["borderWidth",["0px","4px","10px"],1],["borderStyle",["solid","dashed"]],["borderRadius",["0px","12px","40px"]],["boxSizing",["content-box","border-box"]]],st=>{const b=el("div",0,"Contenido");Object.assign(b.style,{width:"200px",background:"var(--red)",color:"#fff",textAlign:"center",borderColor:"#fff"});st.append(b);return{a:b}},{a:".caja (width: 200px)"},"Con content-box el padding y el borde se SUMAN a los 200px; con border-box el ancho total sigue siendo 200px.");
+styleLab("Texto",[["fontSize",["14px","20px","32px"],1],["fontWeight",["400","700"]],["textAlign",["left","center","right"]],["textTransform",["none","uppercase","lowercase","capitalize"]],["textDecoration",["none","underline","line-through"]],["color",["#ffffff","#e11d2e","#22c55e"]]],st=>{const p=el("p",0,"Texto de ejemplo para el examen de HTML y CSS");p.style.margin="0";st.append(p);return{a:p}},{a:"p"});
+styleLab("Posicionamiento",[["position",["static","relative"],0,"p"],["position",["static","relative","absolute"]],["top",["auto","0px","20px","60px"],1],["left",["auto","0px","20px","60px"],1],["zIndex",["auto","1","3"]]],st=>{st.style.height="190px";const mkb=(t,bg,fg)=>{const b=el("b",0,t);Object.assign(b.style,{background:bg,color:fg,display:"inline-block",padding:"14px",borderRadius:"6px"});return b};const h=mkb("Hermano (z-index: 2)","#fff","#000");Object.assign(h.style,{position:"relative",zIndex:2});const a=mkb("Hijo","var(--red)","#fff");st.append(h,a);return{a,p:st}},{a:".hijo",p:".padre"},"Prueba: pon el hijo en absolute. Si el padre es static, se posiciona respecto a otro ancestro (aquí, la tarjeta); con el padre en relative, respecto al padre. Y con z-index 3 tapa al hermano. (fixed no se puede probar aquí porque se fijaría a toda la ventana.)");
+addLab("Colores",p=>{const c=el("div","ctrl2"),sw=el("div","stage"),cd=el("pre"),ins=[];
+const up=()=>{const[r,g,b]=ins.map(i=>+i.value);sw.style.background=`rgb(${r},${g},${b})`;const hx=[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("");const sh=hx.match(/^(.)\1(.)\2(.)\3$/);cd.textContent=`rgb(${r}, ${g}, ${b})\n#${hx}\n`+(sh?`#${sh[1]+sh[2]+sh[3]}  (hexadecimal abreviado de 3 cifras)`:"No se puede abreviar a 3 cifras (cada par debe repetirse: 00, 11… ff)")};
+["R","G","B"].forEach((n,i)=>{const l=el("label",0,n);const r=el("input");r.type="range";r.min=0;r.max=255;r.value=[225,29,46][i];r.oninput=up;ins.push(r);l.append(r);c.append(l)});
+p.append(c,sw,cd,el("p","note","Pista: prueba 255, 0, 0 (rojo, #f00) o 17, 34, 51 (#123)."));up()});
+addLab("Selectores",p=>{const c=el("div","ctrl2"),st=el("div","stage"),cd=el("pre");
+st.innerHTML='<div id="contenedor"><main><section id="fire" class="fire"><h2>Fuego<\/h2><figure><span>img<\/span><\/figure><strong>strong A<\/strong><\/section><section id="water"><h2>Agua<\/h2><p>texto <strong>strong B<\/strong><\/p><\/section><\/main><strong>strong C<\/strong><\/div>';
+const up=()=>{st.querySelectorAll(".hl").forEach(x=>x.classList.remove("hl"));const q=s.value,m=st.querySelectorAll(q);m.forEach(x=>x.classList.add("hl"));cd.textContent=q+" { ... }   →  "+m.length+" elemento(s) seleccionado(s)"};
+const[l,s]=sel("selector",["section",".fire","#water","h2","h2, strong","#contenedor strong","main > section","main > strong","section > strong","section#fire figure span"],0,up);c.append(l);p.append(c,st,cd,el("p","note","Compara \"#contenedor strong\" (descendiente) con \"section > strong\" (hijo directo)."));up()});
+addLab("Responsive",p=>{const c=el("div","ctrl2"),w=el("div","stage"),f=el("div","frame"),cd=el("pre");
+const l=el("label",0,"ancho de pantalla"),r=el("input");r.type="range";r.min=280;r.max=900;r.value=360;l.append(r);c.append(l);
+const bar=el("div","bar2"),ham=el("button","tab","☰"),ul=el("div","menu");["Inicio","Fuego","Agua"].forEach(x=>ul.append(el("a",0,x)));bar.append(el("b",0,"Logo"),ham,ul);f.append(bar);w.append(f);
+let open=false;ham.onclick=()=>{open=!open;up()};
+const up=()=>{const n=+r.value,big=n>=600;f.style.width="min("+n+"px,100%)";ham.style.display=big?"none":"block";ul.style.display=big||open?"flex":"none";ul.style.flexDirection=big?"row":"column";ul.style.flexBasis=big?"auto":"100%";
+cd.textContent="ancho: "+n+"px\n"+(big?"@media (min-width: 600px) ACTIVO\n→ botón oculto, menú visible con flex-direction: row":"estilos base (mobile first)\n→ menú con display: none; el botón lo muestra con display: flex y flex-direction: column")};
+r.oninput=up;p.append(c,w,cd,el("p","note","Arrastra el ancho: el punto de ruptura está en 600px. En móvil, pulsa ☰ para abrir el menú."));up()});
+addLab("Formularios",p=>{const c=el("div","ctrl2"),st=el("div","stage"),cd=el("pre"),msg=el("p","note"),f=el("form");
+function up(){const t=s1.value,i=el("input");i.type=t;i.name="campo";i.required=s2.value=="sí";if(!["checkbox","radio","color","range","file","date","time"].includes(t))i.placeholder="placeholder";if(t=="number"||t=="range"){i.min=1;i.max=10;i.step=t=="number"?2:1}
+const b=el("button","btn","Enviar");b.style.margin="0 0 0 10px";f.replaceChildren(i,b);msg.textContent="";
+cd.textContent=`<form action="..." method="get">\n  <input type="${t}" name="campo"${i.required?" required":""}${i.placeholder?' placeholder="placeholder"':""}${i.min?` min="1" max="10" step="${i.step}"`:""}>\n  <button>Enviar<\/button>\n<\/form>`}
+f.onsubmit=e=>{e.preventDefault();msg.textContent="Válido. Se enviaría: ?"+new URLSearchParams(new FormData(f)).toString()};
+const[l1,s1]=sel("type",["text","password","email","number","tel","url","search","date","time","color","range","file","checkbox","radio"],0,up),[l2,s2]=sel("required",["no","sí"],0,up);c.append(l1,l2);st.append(f,msg);
+p.append(c,st,cd,el("p","note","Pulsa Enviar con type email o url y escribe algo incorrecto: es la validación nativa del navegador."));up()});
+const labs=[...document.querySelectorAll(".lab")],tbs=[];labs.forEach((l,i)=>{const b=el("button","tab"+(i?"":" on"),l.dataset.n);b.onclick=()=>{labs.forEach(x=>x.classList.toggle("on",x==l));tbs.forEach(y=>y.classList.toggle("on",y==b))};tbs.push(b);$("#tabs").append(b)});
+let qs,qi,sc;
+function start(){qs=[...Q].sort(()=>Math.random()-.5);qi=0;sc=0;show()}
+function show(){const c=$("#qc");
+if(qi>=qs.length){const p=Math.round(sc/qs.length*100);c.innerHTML=`<div class="res"><big style="color:${p>=50?"var(--green)":"var(--red)"}">${sc}/${qs.length}<\/big><p>${p>=80?"Excelente, vas sobrado.":p>=50?"Aprobado, repasa los fallos.":"Toca repasar un poco más."}<\/p><button class="btn" id="rs">Repetir test<\/button><\/div>`;$("#rs").onclick=start;return}
+const [q,o,a,e]=qs[qi];
+c.innerHTML=`<div class="qm"><span>Pregunta ${qi+1} de ${qs.length}<\/span><span>Aciertos: ${sc}<\/span><\/div><p class="q"><\/p><div id="os"><\/div><div class="exp" id="ex"><\/div>`;
+c.querySelector(".q").textContent=q;
+o.forEach((t,i)=>{const b=document.createElement("button");b.className="opt";b.textContent=t;b.onclick=()=>{
+if(i==a)sc++;
+document.querySelectorAll(".opt").forEach((x,j)=>{x.disabled=true;x.classList.add(j==a?"ok":"no");if(j==i)x.classList.add("pick")});
+const ex=$("#ex");ex.textContent=(i==a?"¡Correcto! ":"Incorrecto. ")+e;ex.classList.add("show");
+const n=document.createElement("button");n.className="btn";n.textContent=qi==qs.length-1?"Ver resultado":"Siguiente";n.onclick=()=>{qi++;show()};c.append(n)};$("#os").append(b)})}
+start();
+const links=[...document.querySelectorAll("nav a")];
+new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle("on",l.hash=="#"+x.target.id))}),{rootMargin:"-30% 0px -60% 0px"}).observe&&document.querySelectorAll("section").forEach(s=>new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle("on",l.hash=="#"+x.target.id))}),{rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>
